@@ -80,9 +80,15 @@ as well as everything you'd expect like HP/AP/mana/stamina, inventory, items, et
 
 current implementations are basic while I broaden the system base
 
-in addition to the above mentioned systems I would like to add the following:
+in addition to the above mentioned systems I am working on the following:
 
+* attribute system inspired by D&D
+* Leveling and basic classes (warrior and mage to start)
+* expanded combat system to simulate limbs and blood, with wounds and debuffs
+* expansion to the existing systems
 * an advanced inventory management window/system similar to CDDAs
+* detaching ticks from player input into a real time system - you can choose how you want to play and also this functionality is the foundation for multiplayer
+* and more
 
 ---
 
