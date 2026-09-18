@@ -17,6 +17,41 @@ I use AI for education and code review.
 I do NOT use AI for asset generation or game design.
 
 
+**IF YOU WANT TO PLAY**
+The game is free to download under releases.  Phase 1 will always be free and is intended as a demo.
+Here are the default keybinds; they are adjustable in the escape menu
+
+| Action | Key |
+| :--- | :---: |
+| **Move North** | <kbd>E</kbd> |
+| **Move South** | <kbd>C</kbd> |
+| **Move West** | <kbd>S</kbd> |
+| **Move East** | <kbd>F</kbd> |
+| **Move NW** | <kbd>W</kbd> |
+| **Move NE** | <kbd>R</kbd> |
+| **Move SW** | <kbd>X</kbd> |
+| **Move SE** | <kbd>V</kbd> |
+| **Stairs Up** | <kbd>Q</kbd> |
+| **Stairs Down** | <kbd>A</kbd> |
+| **Wait Turn** | <kbd>D</kbd> |
+| **Interact / Pickup / Dig** | <kbd>G</kbd> |
+| **Toggle Inventory** | <kbd>I</kbd> |
+| **Toggle Crafting** | <kbd>U</kbd> |
+| **Rest / Wait Menu** | <kbd>T</kbd> |
+| **Cast: Familiar** | <kbd>1</kbd> |
+| **Cast: Mud Golem** | <kbd>2</kbd> |
+| **Crystallize Mana** | <kbd>3</kbd> |
+| **Cast: Heal Wounds** | <kbd>4</kbd> |
+| **Cast: Regeneration** | <kbd>5</kbd> |
+| **Toggle FPS** | <kbd>F3</kbd> |
+
+The current gameplay loop is a simple wave survival.
+
+Orcs will spawn in the basement on game launch and then by a timer.  They will increase in difficulty ending in an Orc Champion who drops a unique item.
+
+A courier will arrive  on a set timer to deliver materials you can use for crafting potions.  Potions require mana crystals which can be created with the "Crystallize Mana" spell.
+
+I am currently working on implementing attributes and leveling, then will look to expand the gameloop and existing systems.
 
 You can read more about the development path below.
 
