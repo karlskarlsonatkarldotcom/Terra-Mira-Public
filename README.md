@@ -50,7 +50,7 @@ The current gameplay loop is a simple wave survival.
 
 Orcs will spawn in the basement on game launch and then by a timer.  They will increase in difficulty ending in an Orc Champion who drops a unique item.
 
-A courier will arrive  on a set timer to deliver materials you can use for crafting potions.  Potions require mana crystals which can be created with the "Crystallize Mana" spell.
+A courier will arrive  on a set timer to deliver materials you can use for crafting potions.  Potions require mana crystals which can be created with the "Crystallize Mana" spell.  Clay golems will haul items to the chest on the bottom left corner of z1 for you.
 
 I am currently working on implementing attributes and leveling, then will look to expand the gameloop and existing systems.
 
