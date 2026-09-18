@@ -6,14 +6,16 @@ Summary
 Terra Mira is a CDDA inspired wizard tower simulation game with a custom C++ ECS engine based on D&D (specifically Pathfinder 1e) mechanics and lore.  It is a 2D grid based game with z-levels and a heavy focus on simulation and automation.  The idea is CDDA but high fantasy with D&D inspired combat mechanics/spells/items, expanded NPC control/colony sim mechanics, a much greater focus on NPCs in general, and in depth automation both for the NPCs and player.  I am hoping to combine the best aspects of survival simulations and colony sims while addressing what I believe to be the primary issues of both; tedium and performance.
 
 WARNING
+------------------------
 The game is currently in an engine/mechanics test phase. Graphics are purely functional colored squares while core systems are being built out.
 
 DISCLAIMER
+------------------------
 I use AI for education and code review.
 I do NOT use AI for asset generation or game design.
 
 You can read more about the development path below.
-There is also an attached document that has more information on the highlights, planned systems, and overall structure.
+
 Development Path and Goals
 -------------------------
 So this is a long term passion project like DF or CDDA.  The actual development process is broken up into phases, each with their own scope and completion metrics.
