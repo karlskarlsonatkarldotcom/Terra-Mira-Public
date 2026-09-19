@@ -120,7 +120,7 @@ The highlights of the current systems are:
 * **BASIC SPELL SYSTEM AND SUMMONING**
 * **CDDA STYLE POCKET SYSTEM**
 * **INTERLEAVED AP/TIME SYSTEM**
-* **MODERN MOUSE CONTROLS WITH CLICK DRAGGING AND MOUSE STEPPING**
+* **MODERN MOUSE CONTROLS WITH CLICK DRAGGING AND MOUSE WHEEL STEPPING**
 
 as well as everything you'd expect like HP/AP/mana/stamina, inventory, items, etc...
 
