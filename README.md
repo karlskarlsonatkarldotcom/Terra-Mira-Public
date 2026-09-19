@@ -122,7 +122,7 @@ Once the hand handcrafted map and simulation mechanics are complete and function
 
 ---
 
-## Techincal Aspects
+## Technical Aspects
 
 # Generational ECS
 Generational indexing with a recycling system keeps entity lists clean, unique, and safe.  The high level idea of this system is that it adds an extra dimension to entityIDs to more easily make them unique.  It prevents a very severe issue known as the **Zombie Entity**
