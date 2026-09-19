@@ -21,48 +21,25 @@ I do NOT use AI for asset generation or game design.
 
 The game is free to download under releases.  Phase 1 will always be free and is intended as a demo.
 
-Here are the default keybinds; they are adjustable in the escape menu
+The highlights of the current systems are:
 
-Also there are mouse controls; 
+* **Basic Crafting**
+* **Basic automated NPC hauling**
+* **Basic spell system and summons**
+* **CDDA style pocket system**
+* **Interleaved AP/combat system**
+* **Modern mouse controls and mouse wheel zoom/stepping**
+* **Attribute system inspired by D&D**
+* **Leveling and basic classes (warrior and mage to start)**
 
-left click to automove/select entities
+as well as most of the basics you'd expect
 
-right click for context menu
+The current game loop is a defend the inn scenario
+* basic inn defense against orc waves followed by dungeon crawling under the inn to kill invading orcs
+* involves a friendly courier who drops off supplies on an interval for the player to craft potions
+* survive until the final wave
 
-mouse wheel in most step menus
-
-| Action | Key |
-| :--- | :---: |
-| **Move North** | <kbd>E</kbd> |
-| **Move South** | <kbd>C</kbd> |
-| **Move West** | <kbd>S</kbd> |
-| **Move East** | <kbd>F</kbd> |
-| **Move NW** | <kbd>W</kbd> |
-| **Move NE** | <kbd>R</kbd> |
-| **Move SW** | <kbd>X</kbd> |
-| **Move SE** | <kbd>V</kbd> |
-| **Stairs Up** | <kbd>Q</kbd> |
-| **Stairs Down** | <kbd>A</kbd> |
-| **Wait Turn** | <kbd>D</kbd> |
-| **Interact / Pickup / Dig** | <kbd>G</kbd> |
-| **Toggle Inventory Menu** | <kbd>I</kbd> |
-| **Toggle Crafting Menu** | <kbd>U</kbd> |
-| **Toggle Character Sheet Menu** | <kbd>K</kbd> |
-| **Rest / Wait Menu** | <kbd>T</kbd> |
-| **Cast: Familiar** | <kbd>1</kbd> |
-| **Cast: Mud Golem** | <kbd>2</kbd> |
-| **Crystallize Mana** | <kbd>3</kbd> |
-| **Cast: Heal Wounds** | <kbd>4</kbd> |
-| **Cast: Regeneration** | <kbd>5</kbd> |
-| **Toggle FPS** | <kbd>F3</kbd> |
-
-The current gameplay loop is a simple wave survival.
-
-Orcs will spawn in the basement on game launch and then by a timer.  They will increase in difficulty ending in an Orc Champion who drops a unique item.
-
-A courier will arrive  on a set timer to deliver materials you can use for crafting potions.  Potions require mana crystals which can be created with the "Crystallize Mana" spell.  Clay golems will haul items to the chest on the bottom left corner of z1 for you.
-
-Attributes and leveling are implemented, I am next working on UI/user experience touch ups and then gameloop/systems expansion
+There is a help card in the game that explains the controls and has more information
 
 You can read more about the development path below.
 
@@ -108,27 +85,7 @@ Multiplayer is planned. To my knowledge it's as simple as detaching tick progres
 
 Phase 1 is well into development
 
-The highlights of the current systems are:
-
-* **Basic Crafting**
-* **Basic automated NPC hauling**
-* **Basic spell system and summons**
-* **CDDA style pocket system**
-* **Interleaved AP/combat system**
-* **Modern mouse controls and mouse wheel zoom/stepping**
-* **Attribute system inspired by D&D**
-* **Leveling and basic classes (warrior and mage to start)**
-
-as well as most of the basics you'd expect
-
-The current game loop is a defend the inn scenario
-* basic inn defense against orc waves followed by dungeon crawling under the inn to kill invading orcs
-* involves a friendly courier who drops off supplies on an interval for the player to craft potions
-* survive until the final wave
-
-current implementations are mostly simple while I broaden the system base
-
-in addition to the above mentioned systems I am working on the following:
+in addition to what was mentioned above I am working on the following:
 
 * more items and spells
 * expanding the playable area to include a procedural cave dungeon under the basement cave area
