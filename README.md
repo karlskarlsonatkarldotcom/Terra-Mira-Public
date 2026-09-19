@@ -122,7 +122,42 @@ Once the hand handcrafted map and simulation mechanics are complete and function
 
 ---
 
-## Design & Technical Rationale
+## Techincal Aspects
+
+# Generational ECS
+Generational indexing with a recycling system keeps entity lists clean, unique, and safe.  The high level idea of this system is that it adds an extra dimension to entityIDs to more easily make them unique.  It prevents a very severe issue known as the **Zombie Entity**
+
+With a freelist/recycling system its possible to have an entity be destroyed and then have that entityID be recycled while intents are still targetting the old user of that ID.  This leads to "teleporting effects" as those effects will affect the new entity because it has the old ID the effect was targeting.
+
+Generation is an addition to the EntityID struct that simply adds a 2nd dimension to it, which makes it much more unique.  On entity destruction, the generation of that ID is incremented.
+
+Now the effect sees "ID: 4 GEN: 2"
+it knows this new generation of ID 4 is not "ID: 4 GEN 1" and thus the effect fizzles out.
+
+# Interleaved AP/combat system
+The game is tick based but each tick is played out in accordance to a strict AP hierarchy.  At the beginning of a turn the entity with the highest AP gets to act.  After that action the entity with the next highest entity gets to act.  If that happens to be the same entity, it gets to act twice before anybody else.  This cycle repeats until all entity AP is spent and then the tick is over.
+
+In this system AP generation is speed and AP max is initiative basically.  It allows for interrupts and multi-attacks based on speed.
+
+# Flattened arrays and scratchpad pathfinding
+Flattened arrays are contiguous in memory and allow for efficient A* traversal between z levels.  Gridspace (the games hidden 3D lattice of nodes on which the actual tiles are drawn on) is flattened into a 1D array using this equation,
+
+```cpp
+(x + (y * GRID_WIDTH) + (z * GRID_AREA));
+```
+
+A good visual aid for this is those plastic multiplication blocks from elementary school.  You had ones that were planes, rows, and singles.  The planes would be separated into individual tiles with grooves but still connected overall, forming a tiled plane.
+
+So to visualize this, imagine stacking 10 of those planar shaped things on top of each other.
+z here is sifting through those planes.  z = 4 has you skipping the first 4 planes from the bottom to land on the 5th plane. (because of indices starting at 0)
+
+y here is sifting through the rows within that plane, from the top.  so y = 5 would have you skip the first 5 rows within that plane from the top, landing on the 6th row.
+
+x here is moving you tile by tile within the y axis row, moving right from x = 0.  so x = 7 would have you skip 7 tiles to the right and land on the 8th tile.
+
+This is how gridspace is stored in memory.  The scratchpad is basically the same thing; A* uses it to do its work and temporarily store its findings while it pathfinds without altering gridspace.
+
+## Whys
 
 ### WHY A HANDCRAFTED MAP
 
