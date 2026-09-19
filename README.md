@@ -43,7 +43,9 @@ There is a help card in the game that explains the controls and has more informa
 
 <img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/cb61dd7f-ed83-47d2-9dbc-477d8562f1bb" />
 
-You can read more about the development path below.
+**IF YOU WANT TO DISCUSS THE GAME OR ASK ME QUESTIONS**
+
+https://discord.gg/VPCpfkkDzW
 
 ## Development Path and Goals
 
