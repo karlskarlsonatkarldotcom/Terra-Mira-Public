@@ -1,4 +1,4 @@
-# Terra Mira
+<img width="1260" height="1000" alt="New Project" src="https://github.com/user-attachments/assets/85b5eaae-1c7b-4c45-b422-f545cb4b2dd0" />
 
 ## Summary
 
