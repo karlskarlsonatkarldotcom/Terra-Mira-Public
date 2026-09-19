@@ -20,10 +20,15 @@ I do NOT use AI for asset generation or game design.
 **IF YOU WANT TO PLAY**
 
 The game is free to download under releases.  Phase 1 will always be free and is intended as a demo.
+
 Here are the default keybinds; they are adjustable in the escape menu
+
 Also there are mouse controls; 
+
 left click to automove/select entities
+
 right click for context menu
+
 mouse wheel in most step menus
 
 | Action | Key |
