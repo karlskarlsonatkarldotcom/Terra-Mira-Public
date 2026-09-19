@@ -79,7 +79,9 @@ Again, to clarify, I WILL NOT be using AI generated art/audio/assets of any kind
 
 I will focus on an early iteration of modding/player editing after phase 1 is complete.
 
-Multiplayer is planned. To my knowledge it's as simple as detaching tick progression from the player and onto a pulse. Player intents are queued along the existing pipeline AI intents are except stored in a unique player list to allow for queueing multiple actions over multiple ticks.
+Multiplayer is planned. If I understand correctly it's as simple as detaching tick progression from the player and onto a pulse. Player intents are then queued first come first serve along the existing pipeline NPC intents are except stored in a unique player list to allow for queueing multiple actions over multiple ticks.  Strict processing of intents by receive order eliminates race conditions.  Same tile conflicts can be solved with adjacent tile selection or refusal of action if nothing is available.
+
+Anyway it won't be until at least the end of phase 2 though so there is plenty that will happen before I work on it sincerly.
 
 ---
 
@@ -96,7 +98,6 @@ in addition to what was mentioned above I am working on the following:
 * a verbose combat log inspired by Dwarf Fortress
 * basic classes and abilities
 * an advanced inventory management window/system similar to CDDAs
-* detaching ticks from player input into a real time system - you can choose how you want to play and also this functionality is the foundation for multiplayer
 * and more
 
 ---
