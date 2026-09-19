@@ -36,8 +36,9 @@ Here are the default keybinds; they are adjustable in the escape menu
 | **Stairs Down** | <kbd>A</kbd> |
 | **Wait Turn** | <kbd>D</kbd> |
 | **Interact / Pickup / Dig** | <kbd>G</kbd> |
-| **Toggle Inventory** | <kbd>I</kbd> |
-| **Toggle Crafting** | <kbd>U</kbd> |
+| **Toggle Inventory Menu** | <kbd>I</kbd> |
+| **Toggle Crafting Menu** | <kbd>U</kbd> |
+| **Toggle Character Sheet Menu** | <kbd>K</kbd> |
 | **Rest / Wait Menu** | <kbd>T</kbd> |
 | **Cast: Familiar** | <kbd>1</kbd> |
 | **Cast: Mud Golem** | <kbd>2</kbd> |
