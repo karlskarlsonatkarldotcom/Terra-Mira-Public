@@ -110,28 +110,31 @@ Phase 1 is well into development
 
 The highlights of the current systems are:
 
-* **DEFEND THE INN GAMEPLAY LOOP**
+* **Basic Crafting**
+* **Basic automated NPC hauling**
+* **Basic spell system and summons**
+* **CDDA style pocket system**
+* **Interleaved AP/combat system**
+* **Modern mouse controls and mouse wheel zoom/stepping**
+* **Attribute system inspired by D&D**
+* **Leveling and basic classes (warrior and mage to start)**
+
+as well as most of the basics you'd expect
+
+The current game loop is a defend the inn scenario
 * basic inn defense against orc waves followed by dungeon crawling under the inn to kill invading orcs
 * involves a friendly courier who drops off supplies on an interval for the player to craft potions
+* survive until the final wave
 
-
-* **BASIC CRAFTING**
-* **BASIC HAULING**
-* **BASIC SPELL SYSTEM AND SUMMONING**
-* **CDDA STYLE POCKET SYSTEM**
-* **INTERLEAVED AP/TIME SYSTEM**
-* **MODERN MOUSE CONTROLS WITH CLICK DRAGGING AND MOUSE WHEEL STEPPING**
-
-as well as everything you'd expect like HP/AP/mana/stamina, inventory, items, etc...
-
-current implementations are basic while I broaden the system base
+current implementations are mostly simple while I broaden the system base
 
 in addition to the above mentioned systems I am working on the following:
 
-* attribute system inspired by D&D
-* Leveling and basic classes (warrior and mage to start)
+* more items and spells
+* expanding the playable area to include a procedural cave dungeon under the basement cave area
+* filling that cave dungeon with loot and new, stronger enemies
 * expanded combat system to simulate limbs and blood, with wounds and debuffs
-* expansion to the existing systems
+* a verbose combat log inspired by Dwarf Fortress
 * an advanced inventory management window/system similar to CDDAs
 * detaching ticks from player input into a real time system - you can choose how you want to play and also this functionality is the foundation for multiplayer
 * and more
