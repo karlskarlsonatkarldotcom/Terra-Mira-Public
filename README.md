@@ -35,7 +35,7 @@ The highlights of the current systems are:
 as well as most of the basics you'd expect
 
 The current game loop is a defend the inn scenario
-* basic inn defense against orc waves followed by dungeon crawling under the inn to kill invading orcs
+* basic inn defense against orc waves ending with a boss wave
 * involves a friendly courier who drops off supplies on an interval for the player to craft potions
 * survive until the final wave
 
