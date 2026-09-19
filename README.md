@@ -21,6 +21,10 @@ I do NOT use AI for asset generation or game design.
 
 The game is free to download under releases.  Phase 1 will always be free and is intended as a demo.
 Here are the default keybinds; they are adjustable in the escape menu
+Also there are mouse controls; 
+left click to automove/select entities
+right click for context menu
+mouse wheel in most step menus
 
 | Action | Key |
 | :--- | :---: |
@@ -53,7 +57,7 @@ Orcs will spawn in the basement on game launch and then by a timer.  They will i
 
 A courier will arrive  on a set timer to deliver materials you can use for crafting potions.  Potions require mana crystals which can be created with the "Crystallize Mana" spell.  Clay golems will haul items to the chest on the bottom left corner of z1 for you.
 
-I am currently working on implementing attributes and leveling, then will look to expand the gameloop and existing systems.
+Attributes and leveling are implemented, I am next working on UI/user experience touch ups and then gameloop/systems expansion
 
 You can read more about the development path below.
 
