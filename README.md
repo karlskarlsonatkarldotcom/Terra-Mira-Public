@@ -30,7 +30,7 @@ The highlights of the current systems are:
 * **Interleaved AP/combat system**
 * **Modern mouse controls and mouse wheel zoom/stepping**
 * **Attribute system inspired by D&D**
-* **Leveling and basic classes (warrior and mage to start)**
+* **Leveling system
 
 as well as most of the basics you'd expect
 
@@ -94,6 +94,7 @@ in addition to what was mentioned above I am working on the following:
 * filling that cave dungeon with loot and new, stronger enemies
 * expanded combat system to simulate limbs and blood, with wounds and debuffs
 * a verbose combat log inspired by Dwarf Fortress
+* basic classes and abilities
 * an advanced inventory management window/system similar to CDDAs
 * detaching ticks from player input into a real time system - you can choose how you want to play and also this functionality is the foundation for multiplayer
 * and more
