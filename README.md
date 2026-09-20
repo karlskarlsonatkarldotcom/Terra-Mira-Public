@@ -30,7 +30,7 @@ The highlights of the current systems are:
 * **Interleaved AP/combat system**
 * **Modern mouse controls and mouse wheel zoom/stepping**
 * **Attribute system inspired by D&D**
-* **Leveling system
+* **Leveling system**
 
 as well as most of the basics you'd expect
 
