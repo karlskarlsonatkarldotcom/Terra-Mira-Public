@@ -143,6 +143,27 @@ Once the hand handcrafted map and simulation mechanics are complete and function
 
 ---
 
+# On phase 3 design and optimization systems
+So I have pretty grand plans for phase 3 and I want to outline the systems I have in mind to help keep things fast.
+
+*actor = entity that can act (i.e. NPCs and players)*
+# SETTLEMENT BUBBLES
+A settlement will have a kind of reality bubble around it that defines its "sphere of influence" and is a function of the # of actors assigned to it and its general wealth.  Actors assigned to that settlement live under its "bubble" and don't need to know what's going on in the rest of the world.  The only things that an actor assigned to a settlement need to worry about are settlement duties and their own well being.  Thus, their awareness of the world map is contained to this bubble entirely.  All of their checks and behaviors run on what is within that bubble; this acts as a leash for intent generation, pathfinding, and crucially, entity ID lookups.
+
+# BATTLEFIELD BUBBLES
+Battlefield bubbles work on the same concept and are spawned dynamically when any actor begins hostilities with another.  The size of the bubble is a function of the # of combatants and their combat rating (another system that functions as an effective power level, weighing actual stats vs baseline stats to reflect buffs/debuffs etc...)  These bubbles will exist until only one faction is left standing.  These bubbles will act as leashes in the same way but for the combatants of a specific fight.
+
+# AMORTIZATION  AND QUEUING
+Put simply, amortization is just doing things over long periods of time instead of every tick.  For example hunger does not need to be checked every tick it can be checked every minute of in game time, or even 10 minutes.  Non-combat entities probly don't need their health/mana and other non-AP vitals checked every tick, how about every 10 seconds instead?  Non-combat entities also don't need the interleaving AP system; that system really doesn't add much value to non-combat scenarios.  
+
+Pathfinding can be amortized as well.  You can have an entity pathfinds only up to 50 tiles in one tick and then stop, saving the work and finishing the rest of the path next tick.  You can also have a pathfinding queue that goes in order and only processes a certain number of intents before pausing for the tick.  There are A LOT of options here.
+
+So the default for most NPCs would be amortization and a queued processing system.  Full system resolution would only occur for entities in combat.
+
+I think these systems will solve a majority of the performance issues you would expect from the phase 3 goals while also making settlements and battlefields operate in a more controlled and effective manner.
+
+---
+
 ## Technical Aspects
 
 # Generational ECS
@@ -229,14 +250,8 @@ That and the section below it "The Reality of Modern Society" were the last nail
 
 **tl;dr** - raw C# compile output has basically zero security. Anybody can take your exe, throw it in some decompilation program, and output your source code in almost the format you sent to your compiler. A bunch of metadata (Identifiers, type definitions, external references, control flow statements etc...) is just still there in the IL. You can obfuscate it, but simple ones get cracked and advanced ones have an additional performance cost. You can AOT it, but that has weird stupid restrictions. All of this bullshit while still having to deal with the GC.
 
-No.
+Nah.
 
 So we're using C++ which compiles to machine code and removes this problem almost entirely while ALSO being the inherently faster language.
-
-C# decompilation gives you a basic jigsaw puzzle. These can be solved in an afternoon.
-
-C++ decompilation gives you a jigsaw puzzle where all the pieces are rectangular and you have to carve the connections yourself. Also there's no image on the pieces you have to figure that out too. But you do have all the pieces. (it takes months, years for complex code bases)
-
-You get this security for NO PERFORMANCE COST on an INHERENTLY FASTER LANGUAGE. It's just a little harder to learn lol.
 
 To clarify, I just mean source code protection. I don't care if you crack or pirate my game, it's free right now anyway lol.
