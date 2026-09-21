@@ -96,11 +96,9 @@ Player pawn routines is not multiplayer specific but it certainly solves the fas
 
 Further I want to develop tools so that these "pawn modes" can be configured and customized.  For example a breakfast routine that you flip on after waking up that has your character gather food ingredients, cook, eat, clean, organize, and then prompt you for further input.  All of this would take around 6-7 keystrokes in CDDA JUST for the gathering ingredients/cooking/eating part.  Add movement, organizing, storing leftovers and its 20+ keystrokes.  Every time you wake up.
 
-For combat i want to implement a logic waterfall type thing like Dragon Age Origins has.  Simple to start but we'll see how it can be expanded.  This is mostly so that the player can edit their controlled minions/pawns routines and do what they want in combat, but it can make multiplayer combat work in higher game speeds as well.  Or just use it at normal speed why not.
+For combat I want to implement a logic waterfall type thing like Dragon Age Origins has.  Simple to start but we'll see how it can be expanded.  This is mostly so that the player can edit their controlled minions/pawns routines and do what they want in combat, but it can make multiplayer combat work in higher game speeds as well.  Or just use it at normal speed why not.
 
 So I think this should work just fine.  Like I said I won't sincerely try to implement any of this until phase 2 is complete but as far as I can tell this should work lol.
-
-Anyway it won't be until at least the end of phase 2 though so there is plenty that will happen before I work on it sincerly.
 
 ---
 
