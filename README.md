@@ -159,7 +159,13 @@ y here is sifting through the rows within that plane, from the top.  so y = 5 wo
 
 x here is moving you tile by tile within the y axis row, moving right from x = 0.  so x = 7 would have you skip 7 tiles to the right and land on the 8th tile.
 
-This is how gridspace is stored in memory.  The scratchpad is basically the same thing; A* uses it to do its work and temporarily store its findings while it pathfinds without altering gridspace.
+This is how gridspace is stored in memory.
+
+Regarding the scratchpad, normally A* has to dynamically allocate during its processing.  Dynamic allocation involves talking to the OS and searching for adequate memory.  The size of my gridspace is explicitly known which allows us to pre-allocate a scratchpad of the exact needed size for A* to use instead of dynamic allocation.  This avoids dynamic allocation entirely.
+
+Also because of the single allocation the scratchpad is one contiguous pieces of memory.
+
+Oh also it's flattened just like gridspace so directly checking a node is O(1) lol.
 
 # Sparse Sets
 ```
