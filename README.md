@@ -161,6 +161,27 @@ x here is moving you tile by tile within the y axis row, moving right from x = 0
 
 This is how gridspace is stored in memory.  The scratchpad is basically the same thing; A* uses it to do its work and temporarily store its findings while it pathfinds without altering gridspace.
 
+# Sparse Sets
+```
+m_Sparse (Index = Entity ID):
+Index:  [ 0 ]   [ 1 ]   [ 2 ]   [ 3 ]   [ 4 ]   [ 5 ]   [ 6 ]   [ 7 ]  ... [ 9999 ]
+Value:  [NULL]  [NULL]  [NULL]  [ 0 ]   [NULL]  [NULL]  [NULL]  [ 1 ]  ... [ NULL ]
+                                  │                               │
+                                  └──────────────┐ ┌──────────────┘
+                                                 ▼ ▼
+m_Dense (Contiguous components):        [ Health #1 ] [ Health #2 ]
+                                Index:      [ 0 ]         [ 1 ]
+                                Entity:    Entity 3      Entity 7  <-- (Tracked by m_DenseEntities)
+```
+
+So the way this works is that when a component is added to an entity, that entity will be added to the corresponding sparse list index.  The index of that entry on the sparse set is the EntityID.  You can see above that entity 3 is given index 3 on the sparse, and entity 7 is given index 7.
+
+Then there are two dense arrays, one for the component data and one for the entity ID.  These correspond with each other and work on a stack system which ensures contiguity.  New entities are placed directly next to old ones.
+
+On component removal, the last entity in the lists information is copied into the index of the destroyed entity and the last element is popped off of the dense arrays.  So in the above example, if entity 3 lost its health component then entity 7s information would be copied into index 0 of the dense arrays and element 1 of these arrays would be popped off (vector size - 1)
+
+And that's it; it functions entirely off of component addition and removal.  Previously I had a static 10k vector which had to be completely iterated through each time a system needed to process entities.  This brings the number of iterations down from a guaranteed 10k to the number of active components (currently maybe 20 - 40 at any given time).  Individual entity lookups like "does this entity have mana?" are now O(1) which is basically one step away from free.
+
 ## Whys
 
 ### WHY A HANDCRAFTED MAP
