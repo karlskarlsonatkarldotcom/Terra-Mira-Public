@@ -81,7 +81,24 @@ Again, to clarify, I WILL NOT be using AI generated art/audio/assets of any kind
 
 I will focus on an early iteration of modding/player editing after phase 1 is complete.
 
-Multiplayer is planned. If I understand correctly it's as simple as detaching tick progression from the player and onto a pulse. Player intents are then queued first come first serve along the existing pipeline NPC intents are except stored in a unique player list to allow for queueing multiple actions over multiple ticks.  Strict processing of intents by receive order eliminates race conditions.  Same tile conflicts can be solved with adjacent tile selection or refusal of action if nothing is available.
+MULTIPLAYER
+------------
+
+So I have multiplayer designed too.  I think it should work but I won't try implementing it until phase 2 is complete.  Here's the gist:
+
+Detaching tick progression from the player and onto a 0.6 - 1 second server pulse.  Player inputs are queued into the intent processing pipeline; the same one NPCs use except stored in a list to allow for queuing multiple inputs.  Intents are processed in strict receive order which eliminates race conditions.  Movement/action conflicts would have existing solutions from NPC work/testing.
+
+Regarding fast forwarding I have two ideas, consensus time skipping and player pawn routines.
+
+Consensus time skipping is the easiest and most straight forward.  There will be times when all players are locked in a long action (sleep, crafting, meditation etc...)  The systems can identify when all players are locked in and can prompt them to increase speed.  All the existing interrupt structure would already exist so that the speed would come back down to 1 when needed.
+
+Player pawn routines is not multiplayer specific but it certainly solves the fast forwarding issue.  I will be working on surfacing the NPC behavior routines to the player for use when wanted. i.e., the player should be able to flip a switch and activate "pawn mode" to automate their character.  With the ECS structure this is literally just component additions.
+
+Further I want to develop tools so that these "pawn modes" can be configured and customized.  For example a breakfast routine that you flip on after waking up that has your character gather food ingredients, cook, eat, clean, organize, and then prompt you for further input.  All of this would take around 6-7 keystrokes in CDDA JUST for the gathering ingredients/cooking/eating part.  Add movement, organizing, storing leftovers and its 20+ keystrokes.  Every time you wake up.
+
+For combat i want to implement a logic waterfall type thing like Dragon Age Origins has.  Simple to start but we'll see how it can be expanded.  This is mostly so that the player can edit their controlled minions/pawns routines and do what they want in combat, but it can make multiplayer combat work in higher game speeds as well.  Or just use it at normal speed why not.
+
+So I think this should work just fine.  Like I said I won't sincerely try to implement any of this until phase 2 is complete but as far as I can tell this should work lol.
 
 Anyway it won't be until at least the end of phase 2 though so there is plenty that will happen before I work on it sincerly.
 
