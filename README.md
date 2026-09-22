@@ -59,7 +59,7 @@ However, once a phase is beta complete I will be moving onto the next phase inst
 
 Creation myth lore is complete and distinguished from Pathfinder.
 
-Combat mechanics are based on Pathfinder 1e with some adjustments/exceptions. The spell slot system has been translated into mana. There is a stamina system similar to CDDA but more forgiving/workable due to magic/enchanted gear/classes (don't worry its not that bad lol)
+Combat mechanics are based on Pathfinder 1e with some adjustments/exceptions. The spell slot system has been translated into mana. There is a stamina system similar to CDDA but more forgiving/workable due to magic/enchanted gear etc...
 
 There is a limb system and an injury system that replaces the crit system, and a blood system meant to compliment the limb/wound system and act as a "total health pool" in a sense.
 
@@ -113,7 +113,7 @@ in addition to what was mentioned above I am working on the following:
 * filling that cave dungeon with loot and new, stronger enemies
 * expanded combat system to simulate limbs and blood, with wounds and debuffs
 * a verbose combat log inspired by Dwarf Fortress
-* basic classes and abilities
+* Traits skills and abilities
 * an advanced inventory management window/system similar to CDDAs
 * and more
 
