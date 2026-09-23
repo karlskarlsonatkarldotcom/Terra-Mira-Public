@@ -1,5 +1,7 @@
 <img width="1260" height="1000" alt="New Project" src="https://github.com/user-attachments/assets/85b5eaae-1c7b-4c45-b422-f545cb4b2dd0" />
 
+https://terramiradev.itch.io/terra-mira
+
 ## Summary
 
 Terra Mira is a CDDA inspired high fantasy simulation game with a custom C++ ECS engine based on D&D (specifically Pathfinder 1e) mechanics and lore. It is a 2D grid based game with z-levels and a heavy focus on simulation and automation. The idea is CDDA but high fantasy with D&D inspired combat mechanics/spells/items, expanded NPC control/colony sim mechanics, a much greater focus on NPCs in general, and in depth automation both for the NPCs and player. I am hoping to combine the best aspects of survival simulations and colony sims while addressing what I believe to be the primary issues of both; tedium and performance.
