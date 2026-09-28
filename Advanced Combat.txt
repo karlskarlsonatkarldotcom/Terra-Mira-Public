@@ -11,6 +11,7 @@ Blood is a pool that actors have that can be drained through wounds acquired in 
 0% blood remaining would be death
 
 To be clear this isn't actually 0% blood remaining, this is just when the amount of blood left would cause death.
+
 # LIMBS
 The attacker makes a roll against the defenders AC
 If the AC roll is passed then another d20 is rolled to determine which body part is hit
@@ -56,11 +57,8 @@ additionally, head crits will apply the torso debuff at 1/2 magnitude.  so a 2x 
 
 # OVERKILL
 Dealing 200% of a body parts current health should overkill it
-
 Overkilled arms/legs are severed for a -50% Universal/movement AP generation.  This is for a humanoid, we should implement it so that it scales with the # of arms legs, i.e. a 4 legged creature should suffer a 25% reduction of movement AP if one leg is severed.
-
 Overkilled torsos apply the 4x crit debuff.  If the debuff is already on the target, double its effects (150% bleed rate, 60% AP decrease, -12 constitution.)  A torso at 0 health is overkilled by any attack that deals >0 damage.
-
 Overkilled head means no head which means dead
 
 ## SEVERING/MANGLING
@@ -68,6 +66,7 @@ Overkilled limbs are severed by sharp weapons.  Equipment on those limbs (rings/
 Limbs that are brought to 0 without being severed are mangled, applying the same debuffs as severed but with no loss of the limb (meaning it can be easily healed)
 
 Both states result in attack rolls that target that limb being redirected to the torso instead.
+
 # BODY PART HEALTH
 All of this math is referenced from Pathfinder 1e stats and was just so I could have a baseline reference.  The only thing currently implemented here is the body part health ratios per HP.
 HP = (level - 1 * (class specific LP bonus)) + (LP * (con bonus)) + (class specific LP bonus * 2)
@@ -129,10 +128,12 @@ We'll work on this much later lol but lets just make sure the system is ready to
 Ah right items/traits/stuff that adds directly to hit rating instead of indirectly through stats.
 
 OK so at least 3 sources/modifiers to hit rating we'll want to implement in phase 1.
+
 # SPELLS
 
 ## DIRECT DAMAGE
 These (Ice dart is the only one I think lol) should work just like physical/ranged attacks for now.  Just roll the hit dice and then the body part dice.  Should apply wounds but NOT be able to crit for now just damage and wounds.
+
 ## DOTS
 These deal damage with each parts total health in mind and then have that damage be divided amongst all the body parts scaled.  so like below
 
@@ -152,22 +153,17 @@ the total body part health pool is 110
 so torso takes 20 * 0.45 = 9
 limbs take 20 * 0.32 = 6.4 = 6
 head takes 4.6 = 4 (lets always round head damage down)
+
 ## HEALS
 Heals should operate the reverse way that DOTS do except they should also have a "completely healed body part" check.  for example if your arm is at 20% health but every other body part is fully healed, then 100% of the healing should go to the arm with no penalties.  If all body parts are damaged, it should heal them all at spread out value just like the DOTS do damage.
 
 For regeneration we'll just multiply the effect by 6 as a baseline towards humanoids and deal with the rest later lol.  so that means if you have all body parts injured, regeneration should heal +1 per body part per accum.  if you only have 1, then it heals that part for +6 per accum.  this is good enough for now.
 
 light regeneration should also cure wounds if all body parts are full health
-so like
 it should cure light wounds every 30 seconds
 if no light wounds, then it should cure moderate wounds every 5 minutes
 if no moderate wounds then cure critical wounds every 30 minutes
 applications of new wounds should INTERRUPT the current wound healing process, so if a critical wound is 28 minutes into healing and you suffer a light wound, you LOSE that progress. harsh but like I feel its kinda too OP otherwise.  the idea is that you spent that those 30 minutes resting/recuperating so like, new wounds kinda means you weren't doing that lol.
-
-ALSO can we ensure that repeated applications of light regeneration just add to the duration, not clear/reset the application?  so like, casting light regeneration on someone who already has it should literally just add an hour to the duration lol thats it.
-
-also can we implement a base regeneration to blood?  whatever IRL human blood regen speed is lol.
-and can we also add a +10% modifier to that on light regeneration as well?
 
 # COMBAT RATING
 also here's my dynamic threat assessment thing COMBAT RATING
