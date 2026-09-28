@@ -1,0 +1,280 @@
+Below are my mostly organized design notes for the advanced combat system
+
+# BLOOD
+Blood is a pool that actors have that can be drained through wounds acquired in combat.  At certain volumes, debuffs are applied,
+
+100% would be full supply and no debuffs.  
+80% would be light effects (-1 all stats)
+60% would be strong effects (-2 all stats, 20% movement AP reduction)
+40% would be severe effects (-4 all stats, 40% movement AP reduction, -20% universal AP reduction)
+20% remaining would be unconsciousness (actor cannot act until blood recovers to at least 40%)
+0% blood remaining would be death
+
+To be clear this isn't actually 0% blood remaining, this is just when the amount of blood left would cause death.
+# LIMBS
+The attacker makes a roll against the defenders AC
+If the AC roll is passed then another d20 is rolled to determine which body part is hit
+
+1 - 11 = random limb hit 25% chance each
+12 - 18 = torso hit
+19 - 20 = head hit
+
+then the damage rolls happen as normal
+
+# WOUNDS
+then the wound system comes into play
+
+if an attack does less than 15% CURRENT HP of limb = no wound
+15 - 30% of CURRENT HP = light wound (10% of total blood volume per hour)
+30 - 90% = moderate wound (30% of total blood volume per hour)
+90 - 100% = critical wound (50% of total blood volume per hour)
+
+wounds can be applied to any body part and have the same effects for each
+these are just sharp weapon damage, working on blunt damage later
+
+# CRITICAL DEBUFFS
+The critical system will result in effects scaling with the multiplier and lasting for a short period.  The intent is that they are short term shock effects caused by hitting critical areas (think of kidney shot from WoW) 
+
+arms
+2x = 10% Universal AP generation decrease
+3x = 20% AP generation decrease
+4x = 30% AP generation decrease
+
+legs
+2x = 20% Movement AP generation decrease
+3x = 40% AP generation decrease
+4x = 60% AP generation decrease
+
+torso
+2x = 25% bleed rate, -10% Universal AP generation decrease, and -2 constitution
+3x = 50% bleed rate, -20% AP generation decrease, and -4 constitution
+4x = 75% bleed rate, -30% AP generation decrease, and -6 constitution
+
+head
+head crits would apply the x2/x3/x4 multiplier directly to incoming damage just like a normal crit.  the head itself will have less HP than other parts and be easier to destroy.
+additionally, head crits will apply the torso debuff at 1/2 magnitude.  so a 2x head crit will multiply the damage by x2 AND apply a 12% bleed, 5% AP gen decrease, and -1 constitution debuff.
+
+# OVERKILL
+Dealing 200% of a body parts current health should overkill it
+
+Overkilled arms/legs are severed for a -50% Universal/movement AP generation.  This is for a humanoid, we should implement it so that it scales with the # of arms legs, i.e. a 4 legged creature should suffer a 25% reduction of movement AP if one leg is severed.
+
+Overkilled torsos apply the 4x crit debuff.  If the debuff is already on the target, double its effects (150% bleed rate, 60% AP decrease, -12 constitution.)  A torso at 0 health is overkilled by any attack that deals >0 damage.
+
+Overkilled head means no head which means dead
+
+## SEVERING/MANGLING
+Overkilled limbs are severed by sharp weapons.  Equipment on those limbs (rings/weapons/shields) are dropped with the limb.
+Limbs that are brought to 0 without being severed are mangled, applying the same debuffs as severed but with no loss of the limb (meaning it can be easily healed)
+
+Both states result in attack rolls that target that limb being redirected to the torso instead.
+# BODY PART HEALTH
+All of this math is referenced from Pathfinder 1e stats and was just so I could have a baseline reference.  The only thing currently implemented here is the body part health ratios per HP.
+HP = (level - 1 * (class specific LP bonus)) + (LP * (con bonus)) + (class specific LP bonus * 2)
+
+torso = 100% of health
+limbs = 70% of health
+head = 50% of health
+
+so HP is a bookkeeping stat used in the background to determine body part health
+class specific LP bonuses are the averages of the hit dice used for that class.  d10s round up, all others round down.
+so a d6 becomes +3, a d8 becomes +4, a d10 becomes +6
+
+level 7 warrior with +5 con bonus
+HP = (6 * 6) + (7 * 5) + (6 * 2) = 83
+
+torso HP = 100% of HP = 83
+limbs = 70% of HP = 58
+head = 50% of HP = 41
+
+level 7 wizard with +2 con
+HP = (6 * 3) + (7 * 2) + (3 * 2) = 38
+
+torso = 38
+limbs = 26
+head = 19
+
+So for example the player starts with 100 health + 50 from an equipped amulet of heath.  So their,
+torso has 150 health
+arms/leges have 105 health (70% of 150)
+head has 75 health (50% of 150)
+
+taking off the amulet adjusts the body part health accordingly
+torso = 100
+arm/legs = 70
+head = 50
+## DEATH
+Death should currently only occur when head health == 0 or constitution == 0.
+While headshots are chance based, getting constitution to 0 should be a matter of torso crit debuffs for the most part.  These will stack quickly once the torso is at 0 health and VERY quickly once limbs are severed/mangled as attack rolls on those limbs should redirect to the torso.
+# AC
+
+## Standard vs Touch AC
+We'll just implement standard AC for now and work on touch/fleetfoot later.
+
+## Modifiers
+As for the modifiers lets just do normal equipment bonuses, add 0.5 AC for each point of dex, and implement natural armor as well.  We'll work on pathfinders "unique source" system much MUCH later lol I don't want to deal with that yet.
+
+So equip bonus will just be everything and stack.  Armor + shields + natural armor + rings of protection + buffs etc... all just stacks/adds to AC.
+
+No dodge for now, will work on that when we get to classes/traits later.
+
+# Hit Rating
+## Base Attack Bonus
+we'll keep this simple and add +1 per level for all actors.  We'll mess with classes much later.
+## Ability Modifiers
+Strength should add +0.5 to hit rating.  Class feats/traits can alter this scaling later.  Will deal with dex and ranged/small weapon stuff later.
+## Size Modifiers
+We'll work on this much later lol but lets just make sure the system is ready to intake additional sources of hit rating bonus
+## Miscellaneous Modifiers
+Ah right items/traits/stuff that adds directly to hit rating instead of indirectly through stats.
+
+OK so at least 3 sources/modifiers to hit rating we'll want to implement in phase 1.
+# SPELLS
+
+## DIRECT DAMAGE
+These (Ice dart is the only one I think lol) should work just like physical/ranged attacks for now.  Just roll the hit dice and then the body part dice.  Should apply wounds but NOT be able to crit for now just damage and wounds.
+## DOTS
+These deal damage with each parts total health in mind and then have that damage be divided amongst all the body parts scaled.  so like below
+
+immolate does 20 dmg initially and per tick.  using an orc brawler for example it SHOULD be this I think
+
+orc brawler has 50 health
+torso = 100% of health = 50
+limbs = 70% of health = 35
+head = 50% of health = 25
+
+so like
+the total body part health pool is 110
+50 / 110 = 45%
+35 / 110 = 32%
+25 / 110 = 23%
+
+so torso takes 20 * 0.45 = 9
+limbs take 20 * 0.32 = 6.4 = 6
+head takes 4.6 = 4 (lets always round head damage down)
+## HEALS
+Heals should operate the reverse way that DOTS do except they should also have a "completely healed body part" check.  for example if your arm is at 20% health but every other body part is fully healed, then 100% of the healing should go to the arm with no penalties.  If all body parts are damaged, it should heal them all at spread out value just like the DOTS do damage.
+
+For regeneration we'll just multiply the effect by 6 as a baseline towards humanoids and deal with the rest later lol.  so that means if you have all body parts injured, regeneration should heal +1 per body part per accum.  if you only have 1, then it heals that part for +6 per accum.  this is good enough for now.
+
+light regeneration should also cure wounds if all body parts are full health
+so like
+it should cure light wounds every 30 seconds
+if no light wounds, then it should cure moderate wounds every 5 minutes
+if no moderate wounds then cure critical wounds every 30 minutes
+applications of new wounds should INTERRUPT the current wound healing process, so if a critical wound is 28 minutes into healing and you suffer a light wound, you LOSE that progress. harsh but like I feel its kinda too OP otherwise.  the idea is that you spent that those 30 minutes resting/recuperating so like, new wounds kinda means you weren't doing that lol.
+
+ALSO can we ensure that repeated applications of light regeneration just add to the duration, not clear/reset the application?  so like, casting light regeneration on someone who already has it should literally just add an hour to the duration lol thats it.
+
+also can we implement a base regeneration to blood?  whatever IRL human blood regen speed is lol.
+and can we also add a +10% modifier to that on light regeneration as well?
+
+# COMBAT RATING
+also here's my dynamic threat assessment thing COMBAT RATING
+COMBAT RATING
+*HIT DICE = LEVEL POINTS (LP)
+
+Combat Rating (CR) should reflect the combined potential strength of that character at that level while factoring in their current body part health, AP generation, blood pool levels as % of total, actual attack rating and damage (to account for physical potential), and actual mana levels (to account for magical potential)
+base CR should be equal to LP (level Points, specific term translated from pathfinders Hit Dice, same thing basically in its function as a universal indicator of level) 
+of the entity modified by the difference between the unbuffed (magical buffs or gear), undamaged (no wounds), fully rested (no fatigue or ailments) theoretical max of these values compared to their actual values.
+to shorten this, baseline (inherent) potential vs actual (current) potential
+baseline potential would include attribute bonuses but only PERMANENT bonuses, like those from character creation, actual attribute increases from leveling, or permanent buffs like tomes/potions. 
+Permanent here means a few things; that the buff has an indefinite duration and that it is not able to be dispelled or removed in any way other than extremely specific methods (gear buffs are technically permanent and not able to be dispelled, this accounts for that).
+baseline potential is a CONSTANT and only changes on level up or unique situations like reading a stat tome or drinking a stat potion.
+
+all other buffs come from external sources (casted buffs, gear buffs, ability/perk buffs etc...) and should be counted as actual potential modifiers.  debuffs are also actual potential modifiers.
+
+MAIN FORMULA
+--------------
+Actual Modifier = Body Part Health * AP generation * Blood Volume * Attack/Damage rating * Mana levels
+Actual CR = Base CR * Actual Modifier
+
+modifier sum is clamped to 0.25 and 2, so it either cuts CR into 1/4 or doubles it max.
+
+*ALL MODIFIER RESULTS ARE CLAMPED FROM 0.5 to 2
+
+Body part health
+-----------------
+body parts will be "in danger" at 80% or less of total part HP
+having 1 in danger limb with result in this modifier = 0.9
+-2 = 0.8 etc..., bottoming out at 0.5
+having all limbs in danger will result in this modifier = 0.5
+
+modifier = 1 - ((# of parts in danger) * 0.1)
+
+AP generation
+-------------
+ratio of actual AP generation vs baseline of 100
+
+200 / 100 = 2
+100 / 100 = 1
+50 / 100 = 0.5
+
+modifier = (current AP gen) / 100
+
+blood volume
+-------------
+current % of total vs total
+
+100% = 1
+40% = 0.5
+
+modifier = 0.5 + ((((current % / 100) - 0.4)/0.6) * 0.5)
+
+mana volume
+------------
+100% = 1
+40% = 0.5
+
+modifier = 0.5 + ((((current % / 100) - 0.4)/0.6) * 0.5)
+
+attack/damage rating
+---------------------
+ratio of baseline sums vs actual sums
+Current_Combat / Baseline_Combat
+
+Baseline Combat = Baseline_Attack + (Avg_Dice_Damage * Num_Attacks) + Baseline_Damage_Bonus
+Current Combat  = Current_Attack + (Avg_Dice_Damage * Num_Attacks) + Current_Damage_Bonus
+
+so if BC = 10 and CC = 20, then this modifer = 2
+if BC == CC, then = 1
+if BC = 10 and CC = 5, then this modifier = 0.5
+
+modifier = Current_Combat / Baseline_Combat
+
+testing
+Modifier = Body Part Health * AP generation * Blood Volume * Attack/Damage rating * Mana levels
+
+test all bad
+Modifier = 0.5 * 0.5 * 0.5 * 0.5 * 0.5 = 0.032, clamped to 0.25
+
+test all good
+Modifier = 2 * 2 * 2 * 2 * 2 = 32, clamped to 2
+
+test mixes
+0.8 * 1.5 * 0.5 * 1 * 1.2 = 0.72
+
+
+
+# ADDITIONS/ADJUSTMENTS/THOUGHTS AFTER IMPLEMENTATION
+## SHARP VS BLUNT DAMAGE
+The current implementation of the system basically is the sharp system, with wounds applying bleed and severing being possible.
+
+Blunt damage should not apply bleed wounds and should not be capable of severing limbs.
+Blunt wounds should apply direct AP generation reduction
+
+15 - 30% of CURRENT HP = light wound (10% of total blood volume per hour)
+30 - 90% = moderate wound (30% of total blood volume per hour)
+90 - 100% = critical wound (50% of total blood volume per hour)
+
+## CRIT DEBUFF REORIENTATION
+Re-working these into more of a "critical location hit", the inspiration being kidney shot from various RGPs (mostly WoW)
+
+## DEATH AND EXPERIENCE
+there are only two ways for an entity to die; 0 head health or 0 effective constitution.
+
+0 head health is by design reliant on rare dice rolls.
+0 effective constitution should be the way most entities die.  Currently this should be consistently achievable by attacking a 0 health torso, which should apply the 4x crit debuff and its -6 constitution penalty each hit.
+Limbs will be hit the most, but severing/mangling a limb will remove it from the target list and redirect those rolls to the torso.  Later on we will implement toggles/abilities/traits that widen certain body part windows, i.e. allow the entity to focus attacks on a specific body part.
+
+Experience will eventually be refactored entirely into a new class system.  The idea is to gain experience primarily through ACTION (so fighting with a melee weapon would increase "fighter" exp or something, I'm still designing it lol, ranged would level "archer", magic would level "mage" etc...)
