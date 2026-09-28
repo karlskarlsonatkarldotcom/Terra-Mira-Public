@@ -49,6 +49,11 @@ There is a help card in the game that explains the controls and has more informa
 
 https://discord.gg/VPCpfkkDzW
 
+**WHAT I'M CURRENTLY WORKING ON**
+
+The Advanced Combat System - this is a large overhaul to move towards limb/wound based combat vs standard single health pool combat
+I've attached a text file with much more information
+
 ## Development Path and Goals
 
 So this is a long term passion project like DF or CDDA. The actual development process is broken up into phases, each with their own scope and completion metrics.
