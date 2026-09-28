@@ -49,10 +49,21 @@ There is a help card in the game that explains the controls and has more informa
 
 https://discord.gg/VPCpfkkDzW
 
-**WHAT I'M CURRENTLY WORKING ON**
+## WHAT I'M CURRENTLY WORKING ON
 
 The Advanced Combat System - this is a large overhaul to move towards limb/wound based combat vs standard single health pool combat
+
 I've attached a text file with much more information
+
+Everything in that document has been implemented and is mostly functioning as intended, with the exception of the "laters" and "not nows" and also the notes at the bottom.
+
+I am currently writing up documentation so I can get high level overviews of the engine, systems, and pipelines as they are implemented now.  This new combat system changed a lot of other systems and I've kinda lost track of how things work line by line lol so no more updates until I have good documentation.
+
+After that I'll finish up the final touches on the combat system and release it as 0.1.9.
+
+After that will be UI work.  Everything is currently raw SDL3 and debug text and just awful tbh.  Will re-work things to use bitmap fonts to replace the current debug font and SDL_ttf for custom player stuff.  Also using rectcut for menus vs current nasty SDL3 boilerplate.
+
+After that UI work it's on to expanding the current gameplay loop.  More items, enemies, spells, expansion to the basement dungeon etc...  That will be 0.2.  After that, pawn stats (mood, hunger, rest, comfort.)
 
 ## Development Path and Goals
 
