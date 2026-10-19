@@ -233,6 +233,17 @@ A settlement will have a kind of reality bubble around it that defines its "sphe
 # BATTLEFIELD BUBBLES
 Battlefield bubbles work on the same concept and are spawned dynamically when any actor begins hostilities with another.  The size of the bubble is a function of the # of combatants and their combat rating (another system that functions as an effective power level, weighing actual stats vs baseline stats to reflect buffs/debuffs etc...)  These bubbles will exist until only one faction is left standing.  These bubbles will act as leashes in the same way but for the combatants of a specific fight.
 
+# PATHFINDING IN PHASE 3
+So settlement and battlefield bubbles handle a lot of this.  Entities within a battlefield/settlement will only view their bubble as valid pathfinding.  When an entity is assigned to a bubble, the rest of the world is hidden from them.
+
+The other piece of this is map chunking.  Outside of settlements/POIs, most of the map will be empty except for maybe plants/wildlife which don't need a lot of per tick care.  The map can be condensed into a high level grid of POIs and I guess like "biome" chunks.  This way there are WAY fewer nodes for A* to sift through.  The system will granularize POIs/settlements and also any player touched chunks into the actual GridSpace nodes, but most of the world will just exist as large abstracted chunks until a player arrives.
+
+Oh also there will be a "road" system.  There will be hardcoded connections between POIs/settlements that will help simplify A* calculations.  Some of them will be visible but some won't be.  I think kenshi does this lol.
+
+Also, the vast majority of entities will be bound to settlements/POIs.  "Wanderers" aren't really going to be a common thing.  Mostly because its really difficult to give them reasonable logic lol.  Entities may travel between POIs, but those are directed travel, point a to point b, and often to another settlement or back to their origin after.
+
+So while the game will have a wide open world, we can avoid dealing with the pathfinding/NPC headaches with these systems.
+
 # AMORTIZATION  AND QUEUING
 Put simply, amortization is just doing things over long periods of time instead of every tick.  For example hunger does not need to be checked every tick it can be checked every minute of in game time, or even 10 minutes.  Non-combat entities probly don't need their health/mana and other non-AP vitals checked every tick, how about every 10 seconds instead?  Non-combat entities also don't need the interleaving AP system; that system really doesn't add much value to non-combat scenarios.  
 
