@@ -51,19 +51,82 @@ https://discord.gg/VPCpfkkDzW
 
 ## WHAT I'M CURRENTLY WORKING ON
 
-The Advanced Combat System - this is a large overhaul to move towards limb/wound based combat vs standard single health pool combat
+So with 0.2.0 phase 1 is basically done architecturally and all that's left is small clean ups and refactors to the new systems, and then gameplay expansion.  The idea is to just add systems and kinda morph into phase 2.  Some of the key pieces of this include:
 
-I've attached a text file with much more information
+### Advanced combat system updates 
+So critical debuffs are goofy right now and honestly not worth fixing.  With the other systems (wounds, bleeding, severing/mangle, direct torso con damage) critical hits just being damage multipliers actually makes things dynamic and neat I think.  
 
-Everything in that document has been implemented and is mostly functioning as intended, with the exception of the "laters" and "not nows" and also the notes at the bottom.
+Weapons (and maybe spells?) also have much more personality with crit multipliers.  Also the idea behind critical debuffs is basically just "special effects" which work much better as active class abilities.  So I'm not getting rid of critical debuffs, just moving them to their proper place and restoring critical hits to their normal pathfinder functionality.
 
-I am currently writing up documentation so I can get high level overviews of the engine, systems, and pipelines as they are implemented now.  This new combat system changed a lot of other systems and I've kinda lost track of how things work line by line lol so no more updates until I have good documentation.
+That and some other minor tweaks to the combat system are planned for the next update
 
-After that I'll finish up the final touches on the combat system and release it as 0.1.9.
+### NEW CONTENT
 
-After that will be UI work.  Everything is currently raw SDL3 and debug text and just awful tbh.  Will re-work things to use bitmap fonts to replace the current debug font and SDL_ttf for custom player stuff.  Also using rectcut for menus vs current nasty SDL3 boilerplate.
+A bunch of new spells, with the highlight being Raise Undead (a major inspiration for this game is the lack of good necromancer games lol)
 
-After that UI work it's on to expanding the current gameplay loop.  More items, enemies, spells, expansion to the basement dungeon etc...  That will be 0.2.  After that, pawn stats (mood, hunger, rest, comfort.)
+The gist is that raise undead will not create a generic skeleton, it re-animates the actor under the spell casters control.  Risen undead can gain experiences, equip/use items, and is basically a normal actor in every sense except that its existence and will are bound to the Necromancer.  There will be generic skeleton type stuff too, but this specifically is more like Kestoglyr or Delamere from WotR.
+
+Plus a bunch of other stuff to fill gaps, 
+
+Adepts Blessing - Transmutation
+200 mana, 1000 AP cost, 1 hr duration, +1 to all stats
+repeated applications just add 1 hr to duration
+
+Barrier - Abjuration
+200 mana, 1000 AP cost, 1 hr duration, +2 to AC
+repeated applications just add 1 hr to duration
+
+Vital Surge - Necromancy
+100 mana, 100 AP cost, 10 second duration, 
++500% total blood volume per hour (so regen 50% blood volume in 10 seconds), 
++5% to exert threshold
++10% natural regeneration
+
+Fireball - Evocation + Conjuration
+120 mana, 200 AP cost, 12 tile range
+3d8 damage in a 2 tile from center square area
+
+and so on
+
+### REST/ENERGY
+
+The next pawn stat is gonna be energy.  The high level idea is that entities need 7 hours of sleep to recover 17 hours of being awake.  Activity/injury/other things can deplete energy faster.  There's also a debt system so that fatigue/exhaustion can build up below 0 energy.  This debt can be paid off with spells/consumables and also just by sleeping longer than 7 hours.  If you like numbers here's the gist,
+#### Passive Rates:
+* **Passive Awake Drain:** 
+  * $100\% \div 17 \text{ hours} \approx \mathbf{5.88\% \text{ per hour}}$ (or $\approx 0.098\%$ per minute awake).
+* **Ideal Sleep Recovery:** 
+  * $100\% \div 7 \text{ hours} \approx \mathbf{14.28\% \text{ per hour}}$ (or $\approx 0.238\%$ per minute sleeping).
+
+#### The Stamina Hook:
+You want **1000 Stamina spent** to equal **30 minutes (0.5 hours) of ideal sleep recovery**.
+* 30 minutes of ideal sleep recovers: $14.286\% \times 0.5 = \mathbf{7.143\% \text{ Energy}}$.
+* Therefore, spending **1000 Stamina drains 7.143% Energy**.
+* **Per point of Stamina:** Each 1 Stamina spent drains **$0.007143\%$ Energy**.
+
+### EXPANDED GAMEPLAY LOOP
+
+I want to expand the gameplay loop to have a deeper dungeon and a final big fight outside the inn on ground level with lots of enemies and some friendlies.  The gist is below
+
+Expand the courier deliveries (more items)
+
+After the orc waves have some log output about loud crashing noises and add a z level transition to go lower
+
+Build 2 proc gen cave dungeons under the basement (so we'll be expanding z from 4 to 6)
+
+Fill the caves with AI orcs and new goblin types
+
+On z0 make a troll boss surrounded by lots of orcs/goblins
+
+Once the troll is dead have a prompt tell the player has done well and to go rest.
+
+After they wake up trigger a battle outside the inn and prompt the player to join.
+
+At that point, draw the outside of the inn (so z3)
+A large band of orcs will show up.  like, 3 trolls, a dozen goblin archers, and dozens of orc/goblin melee fighters.
+
+Some friendly knights will also show up, like 10-12.  It should be very difficult to win this.
+
+Once all of this is implemented I'll start work on the first NPC spellcaster and some advanced NPC combat logic.
 
 ## Development Path and Goals
 
