@@ -238,7 +238,7 @@ So settlement and battlefield bubbles handle a lot of this.  Entities within a b
 
 The other piece of this is map chunking.  Outside of settlements/POIs, most of the map will be empty except for maybe plants/wildlife which don't need a lot of per tick care.  The map can be condensed into a high level grid of POIs and I guess like "biome" chunks.  This way there are WAY fewer nodes for A* to sift through.  The system will granularize POIs/settlements and also any player touched chunks into the actual GridSpace nodes, but most of the world will just exist as large abstracted chunks until a player arrives.
 
-Oh also there will be a "road" system.  There will be hardcoded connections between POIs/settlements that will help simplify A* calculations.  Some of them will be visible but some won't be.  I think kenshi does this lol.
+Also there will be a "road" system.  There will be hardcoded connections between POIs/settlements that will help simplify A* calculations.  Some of them will be visible but some won't be.
 
 Also, the vast majority of entities will be bound to settlements/POIs.  "Wanderers" aren't really going to be a common thing.  Mostly because its really difficult to give them reasonable logic lol.  Entities may travel between POIs, but those are directed travel, point a to point b, and often to another settlement or back to their origin after.
 
