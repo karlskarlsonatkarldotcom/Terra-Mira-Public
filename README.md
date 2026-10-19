@@ -51,7 +51,7 @@ https://discord.gg/VPCpfkkDzW
 
 ## WHAT I'M CURRENTLY WORKING ON
 
-So with 0.2.0 phase 1 is basically done architecturally and all that's left is small clean ups and refactors to the new systems, and then gameplay expansion.  The idea is to just add systems and kinda morph into phase 2.  Some of the key pieces of this include:
+So with 0.2.0 phase 1 is basically done architecturally and all that's left is small clean ups and refactors to the new systems, and then gameplay expansion.  The idea is to just add systems and kinda morph into phase 2.  Some of the key upcoming pieces of this include:
 
 ### Advanced combat system updates 
 So critical debuffs are goofy right now and honestly not worth fixing.  With the other systems (wounds, bleeding, severing/mangle, direct torso con damage) critical hits just being damage multipliers actually makes things dynamic and neat I think.  
@@ -91,11 +91,12 @@ and so on
 ### REST/ENERGY
 
 The next pawn stat is gonna be energy.  The high level idea is that entities need 7 hours of sleep to recover 17 hours of being awake.  Activity/injury/other things can deplete energy faster.  There's also a debt system so that fatigue/exhaustion can build up below 0 energy.  This debt can be paid off with spells/consumables and also just by sleeping longer than 7 hours.  If you like numbers here's the gist,
+
 #### Passive Rates:
 * **Passive Awake Drain:** 
-  * $100\% \div 17 \text{ hours} \approx \mathbf{5.88\% \text{ per hour}}$ (or $\approx 0.098\%$ per minute awake).
+  * 100% ÷ 17 hours ≈ **5.88% per hour** (≈ 0.098% per minute awake)
 * **Ideal Sleep Recovery:** 
-  * $100\% \div 7 \text{ hours} \approx \mathbf{14.28\% \text{ per hour}}$ (or $\approx 0.238\%$ per minute sleeping).
+  * 100% ÷ 7 hours ≈ **14.28% per hour** (≈ 0.238% per minute sleeping)
 
 #### The Stamina Hook:
 You want **1000 Stamina spent** to equal **30 minutes (0.5 hours) of ideal sleep recovery**.
