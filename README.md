@@ -43,7 +43,7 @@ The current game loop is a defend the inn scenario
 
 There is a help card in the game that explains the controls and has more information
 
-<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/5a0f2f26-5f08-49b8-9fc8-0b5baea0473a" />
+<img width="2560" height="1440" alt="First view" src="https://github.com/user-attachments/assets/a4f50eee-ab7e-4704-b0f0-1c2f466cb635" />
 
 **IF YOU WANT TO DISCUSS THE GAME OR ASK ME QUESTIONS**
 
