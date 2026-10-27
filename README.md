@@ -30,6 +30,7 @@ The highlights of the current systems are:
 * **Basic spell system and summons**
 * **CDDA style pocket system**
 * **Interleaved AP/combat system**
+* **Advanced Combat System with blood, wounds, and body part logic**
 * **Modern mouse controls and mouse wheel zoom/stepping**
 * **Attribute system inspired by D&D**
 * **Leveling system**
