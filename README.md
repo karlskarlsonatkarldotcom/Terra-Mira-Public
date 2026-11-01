@@ -303,24 +303,4 @@ One of the key reasons of the handcrafted map instead of procedural generation i
 
 This is the reason for the ECS engine and focus on performance. I do also have ideas for general amortization and queuing systems for non-combat entities, but these are not the same as completely abstracting something into a different state permanently until the player nears.
 
----
-
-### WHY C++
-
-When people complain about C++ they typically say things like "its unsafe, difficult to learn, and slow to build with."
-
-What you will never hear anybody say about C++ is "it runs slow," so that's reason one.
-
-Reason 2 is source code security.
-
-I initially started with C#, completed the Monogame tutorial, then came to [this section](https://docs.monogame.net/articles/tutorials/building_2d_games/25_packaging_game/index.html?tabs=windows&utm_source=gemini#code-obfuscation)
-
-That and the section below it "The Reality of Modern Society" were the last nails in the coffin for me using C#. I was already annoyed with the garbage collector and restrictions/performance overhead in general.
-
-**tl;dr** - raw C# compile output has basically zero security. Anybody can take your exe, throw it in some decompilation program, and output your source code in almost the format you sent to your compiler. A bunch of metadata (Identifiers, type definitions, external references, control flow statements etc...) is just still there in the IL. You can obfuscate it, but simple ones get cracked and advanced ones have an additional performance cost. You can AOT it, but that has weird stupid restrictions. All of this bullshit while still having to deal with the GC.
-
-Nah.
-
-So we're using C++ which compiles to machine code and removes this problem almost entirely while ALSO being the inherently faster language.
-
 To clarify, I just mean source code protection. I don't care if you crack or pirate my game, it's free right now anyway lol.
