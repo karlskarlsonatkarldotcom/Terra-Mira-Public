@@ -51,43 +51,9 @@ There is a help card in the game that explains the controls and has more informa
 https://discord.gg/VPCpfkkDzW
 
 ## WHAT I'M CURRENTLY WORKING ON
+0.2.1 is OUT, lots of changes in the changelog
 
-So with 0.2.0 phase 1 is basically done architecturally and all that's left is small clean ups and refactors to the new systems, and then gameplay expansion.  The idea is to just add systems and kinda morph into phase 2.  Some of the key upcoming pieces of this include:
-
-### Advanced combat system updates 
-So critical debuffs are goofy right now and honestly not worth fixing.  With the other systems (wounds, bleeding, severing/mangle, direct torso con damage) critical hits just being damage multipliers actually makes things dynamic and neat I think.  
-
-Weapons (and maybe spells?) also have much more personality with crit multipliers.  Also the idea behind critical debuffs is basically just "special effects" which work much better as active class abilities.  So I'm not getting rid of critical debuffs, just moving them to their proper place and restoring critical hits to their normal pathfinder functionality.
-
-That and some other minor tweaks to the combat system are planned for the next update
-
-### NEW CONTENT
-
-A bunch of new spells, with the highlight being Raise Undead (a major inspiration for this game is the lack of good necromancer games lol)
-
-The gist is that raise undead will not create a generic skeleton, it re-animates the actor under the spell casters control.  Risen undead can gain experiences, equip/use items, and is basically a normal actor in every sense except that its existence and will are bound to the Necromancer.  There will be generic skeleton type stuff too, but this specifically is more like Kestoglyr or Delamere from WotR.
-
-Plus a bunch of other stuff to fill gaps, 
-
-Adepts Blessing - Transmutation
-200 mana, 1000 AP cost, 1 hr duration, +1 to all stats
-repeated applications just add 1 hr to duration
-
-Barrier - Abjuration
-200 mana, 1000 AP cost, 1 hr duration, +2 to AC
-repeated applications just add 1 hr to duration
-
-Vital Surge - Necromancy
-100 mana, 100 AP cost, 10 second duration, 
-+500% total blood volume per hour (so regen 50% blood volume in 10 seconds), 
-+5% to exert threshold
-+10% natural regeneration
-
-Fireball - Evocation + Conjuration
-120 mana, 200 AP cost, 12 tile range
-3d8 damage in a 2 tile from center square area
-
-and so on
+UP NEXT IS
 
 ### REST/ENERGY
 
@@ -105,30 +71,41 @@ You want **1000 Stamina spent** to equal **30 minutes (0.5 hours) of ideal sleep
 * Therefore, spending **1000 Stamina drains 7.143% Energy**.
 * **Per point of Stamina:** Each 1 Stamina spent drains **$0.007143\%$ Energy**.
 
+### PIERCE DAMAGE TYPE
+
+Thinking that pierce wounds will cause a light bleed on light wound but with moderate and crit wounds reduce attributes relative to the body part (str/dex for limbs, con for torso, int/wis for head) to simulate internal damage
+
+### DAMAGE RESISTANCE
+
+Sharp, blunt, pierce, and magical DR for now.  Will expand magical to be specific to element/type of damage in the future.
+
+### MORE HOTBARS/KEYMAPPINGS
+
+Spell count is climbing and other actives/abilities are coming soon.  Will be adding functionality for multiple additional hotbars, make them sizeable/draggable like other menus, and expand keybinding to allow for any character to be assigned including modifier combos (like shift + a or ctrl + a)
+
+### CHEST/CONTAINER/POCKET ORGANIZATION
+
+Search for specific items and have the search list narrow per letter, organize items by type, condense items into stacks (so hadnful of moongrass x56 instead of handful of moongrass handful of moongrass handful of moongrass handful of moongrass handful of moongrass handful of moongrass)
+
+### BALANCE PASS ON ITEMS
+
+I noticed after uploading that the large shield is at +3 AC and the small shield at +3 AC ??? will be fixing stuff like that
+
 ### EXPANDED GAMEPLAY LOOP
 
-I want to expand the gameplay loop to have a deeper dungeon and a final big fight outside the inn on ground level with lots of enemies and some friendlies.  The gist is below
+Two dungeon layers below the current one
 
-Expand the courier deliveries (more items)
+New creatures (Large troll, goblin spear and archers, refine the orc types, new friendly knights)
 
-After the orc waves have some log output about loud crashing noises and add a z level transition to go lower
+New weapons/gear for all of these creatures
 
-Build 2 proc gen cave dungeons under the basement (so we'll be expanding z from 4 to 6)
+Ranged functionality (basic implementation to start, allies in melee combat just reduce hit change, no friendly fire for now)
 
-Fill the caves with AI orcs and new goblin types
+Final fight will include a very large war party attacking the village, map will be expanded to outside the inn
 
-On z0 make a troll boss surrounded by lots of orcs/goblins
+Aiming for ~100 hostile entities and ~12 friendlies, you will want to stock up on potions, undead minions and clay golems to have a chance
 
-Once the troll is dead have a prompt tell the player has done well and to go rest.
-
-After they wake up trigger a battle outside the inn and prompt the player to join.
-
-At that point, draw the outside of the inn (so z3)
-A large band of orcs will show up.  like, 3 trolls, a dozen goblin archers, and dozens of orc/goblin melee fighters.
-
-Some friendly knights will also show up, like 10-12.  It should be very difficult to win this.
-
-Once all of this is implemented I'll start work on the first NPC spellcaster and some advanced NPC combat logic.
+Expansion of courier system to allow for more consistent crafting, also add more magical items for the courier to drop off
 
 ## Development Path and Goals
 
