@@ -51,9 +51,41 @@ There is a help card in the game that explains the controls and has more informa
 https://discord.gg/VPCpfkkDzW
 
 ## WHAT I'M CURRENTLY WORKING ON
-0.2.1 is OUT, lots of changes in the changelog
+0.2.2 is OUT, lots of changes in the changelog
 
 UP NEXT IS
+
+### DAMAGE REDUCTION
+
+Basic implementation inspired by pathfinder 1e.  Will cover slash, blunt, pierce, and "magical" for now.  In the near future more damage types will be added to expand magic damage (heat, cold, shock at least, probly more)
+
+### HOTBAR EXPANSION
+
+Modifier keys are in and working, next up is more hotbars.  They'll be draggable and also alignable with each other.  I'll try to get some snapping functionality in too so it can snap neatly and proportionally to the center bottom at least, then you can stack additional hotbars on top of that.
+
+### THE RAID
+
+This will be a large battle outside the inn on ground level after the troll is killed.  The idea is that a very large group of hostiles (5 trolls, 10 champions, ~20 brawlers, and dozens of goblin spear/bow) will show up and attack.  A smaller group of friendlies will also show up (12 comitatenses, 4 adamantii, 2 curiosi exploratores) and assist.
+
+### THE LORE
+
+So I should talk a bit about the lore for the stuff I'm introducing here.  I have a TON of notes but the gist is that there is a magical empire ruled by a the head of a very old magical dynasty.  They have been in power for ~1500 years and it has been relatively prosperous and stable.
+
+The flavor is ancient western Roman but the capital never moved and Rome never fell.  The dynasty took power in what is equivalent to ~200 BC and the time the game takes place in is the equivalent of ~1300 AD.  The empire has mastered steel and other high medieval technologies while maintaining western Roman sensibilities and paradigms.
+
+Total land area is Rome circa 120AD + 10% total land area (about 5.5 million sqkm).  The empire is cautious and spends most time building infrastructure and wealth on already conquered land and fortifying the frontiers before moving on.
+
+The military paradigm is an evolution of late Roman military tactics and can be generally defined by 3 pillars.
+
+Defense in depth - Limitanei are the boarder defense forces whose job is to take account of threats and alert allies while harassing/slowing the incoming threat.  Comitatenses are the highly mobile mixed arms forces stationed at key locations so that they can rapidly deploy to meet the threat and destroy it.
+
+Combined arms and mobility - Every soldier in the empire is trained in melee, ranged, and cavalry combat.  The mainstay comitatenses is hybrid skirmisher/heavy melee infantry with a steel helm, hauberk, steel spatha (arming sword basically), hasta (6 - 8 ft thrusting spear), large oval shield edge banded with steel and large steel boss in the middle (clipeus), and ~5x plumbata (throwing dart, these are to javelins kinda like crossbow bolts are to arrows, big armor pierce potential.)
+
+Comitatenses Admantii are ultra heavy armored Roman flavored knights basically.  They have horses but are mostly unarmored while riding and serve as any standard comitat would.  They have "squires" as well who carry most of their gear and also serve as light skirmish cavalry.  Their real purpose is tight space/dungeon crawling combat where the adamantii will dismount and armor up where needed with the help of the squire.  Much more armor than a standard comitat, and equipped with a large steel poleaxe with spear tip instead of hasta.
+
+Also, EVERY soldier in the empire has a horse.  Food production is practically a solved science with magical and technological advancements and the maintenance/upkeep is well worth the tactical and logistical benefits.
+
+The third pillar is recon/intel and it is handled by the empires intelligence organization, the Curiosi.  They are basically explorers/secret service types that are responsible for maintaining full awareness of the empires threats, both internal and external.  The exploratores are the highly trained grunts of this organization, and are your standard high dex rogue types currently.
 
 ### REST/ENERGY
 
@@ -70,42 +102,6 @@ You want **1000 Stamina spent** to equal **30 minutes (0.5 hours) of ideal sleep
 * 30 minutes of ideal sleep recovers: $14.286\% \times 0.5 = \mathbf{7.143\% \text{ Energy}}$.
 * Therefore, spending **1000 Stamina drains 7.143% Energy**.
 * **Per point of Stamina:** Each 1 Stamina spent drains **$0.007143\%$ Energy**.
-
-### PIERCE DAMAGE TYPE
-
-Thinking that pierce wounds will cause a light bleed on light wound but with moderate and crit wounds reduce attributes relative to the body part (str/dex for limbs, con for torso, int/wis for head) to simulate internal damage
-
-### DAMAGE RESISTANCE
-
-Sharp, blunt, pierce, and magical DR for now.  Will expand magical to be specific to element/type of damage in the future.
-
-### MORE HOTBARS/KEYMAPPINGS
-
-Spell count is climbing and other actives/abilities are coming soon.  Will be adding functionality for multiple additional hotbars, make them sizeable/draggable like other menus, and expand keybinding to allow for any character to be assigned including modifier combos (like shift + a or ctrl + a)
-
-### CHEST/CONTAINER/POCKET ORGANIZATION
-
-Search for specific items and have the search list narrow per letter, organize items by type, condense items into stacks (so hadnful of moongrass x56 instead of handful of moongrass handful of moongrass handful of moongrass handful of moongrass handful of moongrass handful of moongrass)
-
-### BALANCE PASS ON ITEMS
-
-I noticed after uploading that the large shield is at +3 AC and the small shield at +3 AC ??? will be fixing stuff like that
-
-### EXPANDED GAMEPLAY LOOP
-
-Two dungeon layers below the current one
-
-New creatures (Large troll, goblin spear and archers, refine the orc types, new friendly knights)
-
-New weapons/gear for all of these creatures
-
-Ranged functionality (basic implementation to start, allies in melee combat just reduce hit change, no friendly fire for now)
-
-Final fight will include a very large war party attacking the village, map will be expanded to outside the inn
-
-Aiming for ~100 hostile entities and ~12 friendlies, you will want to stock up on potions, undead minions and clay golems to have a chance
-
-Expansion of courier system to allow for more consistent crafting, also add more magical items for the courier to drop off
 
 ## Development Path and Goals
 
