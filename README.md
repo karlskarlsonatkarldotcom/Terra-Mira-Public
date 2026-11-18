@@ -51,57 +51,25 @@ There is a help card in the game that explains the controls and has more informa
 https://discord.gg/VPCpfkkDzW
 
 ## WHAT I'M CURRENTLY WORKING ON
-0.2.2 is OUT, lots of changes in the changelog
+0.2.3 is OUT
 
 UP NEXT IS
 
-### DAMAGE REDUCTION
+### NPC RANGED COMBAT
 
-Basic implementation inspired by pathfinder 1e.  Will cover slash, blunt, pierce, and "magical" for now.  In the near future more damage types will be added to expand magic damage (heat, cold, shock at least, probly more)
+So ranged combat is implemented but not hooked into any AI scripts.  There are archers that spawn in the raid but if you watch they just charge you and melee attack with their bows lol.
 
-### HOTBAR EXPANSION
+### NPC SPELLCASTERS
 
-Modifier keys are in and working, next up is more hotbars.  They'll be draggable and also alignable with each other.  I'll try to get some snapping functionality in too so it can snap neatly and proportionally to the center bottom at least, then you can stack additional hotbars on top of that.
-
-### THE RAID
-
-This will be a large battle outside the inn on ground level after the troll is killed.  The idea is that a very large group of hostiles (5 trolls, 10 champions, ~20 brawlers, and dozens of goblin spear/bow) will show up and attack.  A smaller group of friendlies will also show up (12 comitatenses, 4 adamantii, 2 curiosi exploratores) and assist.
-
-### THE LORE
-
-So I should talk a bit about the lore for the stuff I'm introducing here.  I have a TON of notes but the gist is that there is a magical empire ruled by a the head of a very old magical dynasty.  They have been in power for ~1500 years and it has been relatively prosperous and stable.
-
-The flavor is ancient western Roman but the capital never moved and Rome never fell.  The dynasty took power in what is equivalent to ~200 BC and the time the game takes place in is the equivalent of ~1300 AD.  The empire has mastered steel and other high medieval technologies while maintaining western Roman sensibilities and paradigms.
-
-Total land area is Rome circa 120AD + 10% total land area (about 5.5 million sqkm).  The empire is cautious and spends most time building infrastructure and wealth on already conquered land and fortifying the frontiers before moving on.
-
-The military paradigm is an evolution of late Roman military tactics and can be generally defined by 3 pillars.
-
-Defense in depth - Limitanei are the boarder defense forces whose job is to take account of threats and alert allies while harassing/slowing the incoming threat.  Comitatenses are the highly mobile mixed arms forces stationed at key locations so that they can rapidly deploy to meet the threat and destroy it.
-
-Combined arms and mobility - Every soldier in the empire is trained in melee, ranged, and cavalry combat.  The mainstay comitatenses is hybrid skirmisher/heavy melee infantry with a steel helm, hauberk, steel spatha (arming sword basically), hasta (6 - 8 ft thrusting spear), large oval shield edge banded with steel and large steel boss in the middle (clipeus), and ~5x plumbata (throwing dart, these are to javelins kinda like crossbow bolts are to arrows, big armor pierce potential.)
-
-Comitatenses Admantii are ultra heavy armored Roman flavored knights basically.  They have horses but are mostly unarmored while riding and serve as any standard comitat would.  They have "squires" as well who carry most of their gear and also serve as light skirmish cavalry.  Their real purpose is urban/tight space/dungeon crawling combat where the adamantii will dismount and armor up where needed with the help of the squire.  Much more armor than a standard comitat, and equipped with a large steel poleaxe with spear tip instead of hasta.
-
-Also, EVERY soldier in the empire has a horse.  Food production is practically a solved science with magical and technological advancements and the maintenance/upkeep is well worth the tactical and logistical benefits.
-
-The third pillar is recon/intel and it is handled by the empires intelligence organization, the Curiosi.  They are basically explorers/secret service types that are responsible for maintaining full awareness of the empires threats, both internal and external.  The exploratores are the highly trained grunts of this organization, and are your standard high dex rogue types currently.
+100% absolutely need functioning and competent AI spellcaster archetypes.  Thinking of a basic buffer, healer, and single unit damager types to start.
 
 ### REST/ENERGY
 
-The next pawn stat is gonna be energy.  The high level idea is that entities need 7 hours of sleep to recover 17 hours of being awake.  Activity/injury/other things can deplete energy faster.  There's also a debt system so that fatigue/exhaustion can build up below 0 energy.  This debt can be paid off with spells/consumables and also just by sleeping longer than 7 hours.  If you like numbers here's the gist,
+The next pawn stat is gonna be energy.  The high level idea is that entities need 7 hours of sleep to recover 17 hours of being awake.  Activity/injury/other things can deplete energy faster.  There's also a debt system so that fatigue/exhaustion can build up below 0 energy.  This debt can be paid off with spells/consumables and also just by sleeping longer than 7 hours.  Sleeping will add a bonus to regeneration rates (health, mana, blood), being exhausted will add debuffs to these and other stuff like AP generation with heavy exhaustion.
 
-#### Passive Rates:
-* **Passive Awake Drain:** 
-  * 100% ÷ 17 hours ≈ **5.88% per hour** (≈ 0.098% per minute awake)
-* **Ideal Sleep Recovery:** 
-  * 100% ÷ 7 hours ≈ **14.28% per hour** (≈ 0.238% per minute sleeping)
+### PLAYER CONSTRUCTION
 
-#### The Stamina Hook:
-You want **1000 Stamina spent** to equal **30 minutes (0.5 hours) of ideal sleep recovery**.
-* 30 minutes of ideal sleep recovers: $14.286\% \times 0.5 = \mathbf{7.143\% \text{ Energy}}$.
-* Therefore, spending **1000 Stamina drains 7.143% Energy**.
-* **Per point of Stamina:** Each 1 Stamina spent drains **$0.007143\%$ Energy**.
+Will be VERY basic to start, just a simple bedroll to deploy and sleep wherever.  Also some basic construction materials and the ability to repair walls.
 
 ## Development Path and Goals
 
@@ -196,6 +164,26 @@ Settlements will also act as behavioral and pathfinding leashes for their inhabi
 Once the hand handcrafted map and simulation mechanics are complete and functional it will be time for Narrative expansion, with implementation of world building/mythology/factions. I have ideas for some storylines involving the beings from the creation myth and their plans. Also this phase involves additional exploration expansion with other map regions acting similar to Rimworlds multiple base functionality. Planar travel also offers some fun late game potential.
 
 ---
+
+# SOME LORE
+
+So I should talk a bit about the lore for the stuff that has been implemented.  I have a TON of notes but the gist is that there is a magical empire ruled by a the head of a very old magical dynasty.  They have been in power for ~1500 years and it has been relatively prosperous and stable.
+
+The flavor is ancient western Roman but the capital never moved and Rome never fell.  The dynasty took power in what is equivalent to ~200 BC and the time the game takes place in is the equivalent of ~1300 AD.  The empire has mastered steel and other high medieval technologies while maintaining western Roman sensibilities and paradigms.
+
+Total land area is Rome circa 120AD + 10% total land area (about 5.5 million sqkm).  The empire is cautious and spends most time building infrastructure and wealth on already conquered land and fortifying the frontiers before moving on.
+
+The military paradigm is an evolution of late Roman military tactics and can be generally defined by 3 pillars.
+
+Defense in depth - Limitanei are the boarder defense forces whose job is to take account of threats and alert allies while harassing/slowing the incoming threat.  Comitatenses are the highly mobile mixed arms forces stationed at key locations so that they can rapidly deploy to meet the threat and destroy it.
+
+Combined arms and mobility - Every soldier in the empire is trained in melee, ranged, and cavalry combat.  The mainstay comitatenses is hybrid skirmisher/heavy melee infantry with a steel helm, hauberk, steel spatha (arming sword basically), hasta (6 - 8 ft thrusting spear), large oval shield edge banded with steel and large steel boss in the middle (clipeus), and ~5x plumbata (throwing dart, these are to javelins kinda like crossbow bolts are to arrows, big armor pierce potential.)
+
+Comitatenses Admantii are ultra heavy armored Roman flavored knights basically.  They have horses but are mostly unarmored while riding and serve as any standard comitat would.  They have "squires" as well who carry most of their gear and also serve as light skirmish cavalry.  Their real purpose is urban/tight space/dungeon crawling combat where the adamantii will dismount and armor up where needed with the help of the squire.  Much more armor than a standard comitat, and equipped with a large steel poleaxe with spear tip instead of hasta.
+
+Also, EVERY soldier in the empire has a horse.  Food production is practically a solved science with magical and technological advancements and the maintenance/upkeep is well worth the tactical and logistical benefits.
+
+The third pillar is recon/intel and it is handled by the empires intelligence organization, the Curiosi.  They are basically explorers/secret service types that are responsible for maintaining full awareness of the empires threats, both internal and external.  The exploratores are the highly trained grunts of this organization, and are your standard high dex rogue types currently.
 
 # On phase 3 design and optimization systems
 So I have pretty grand plans for phase 3 and I want to outline the systems I have in mind to help keep things fast.
