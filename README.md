@@ -57,19 +57,27 @@ UP NEXT IS
 
 ### NPC RANGED COMBAT
 
-So ranged combat is implemented but not hooked into any AI scripts.  There are archers that spawn in the raid but if you watch they just charge you and melee attack with their bows lol.
-
-### NPC SPELLCASTERS
-
-100% absolutely need functioning and competent AI spellcaster archetypes.  Thinking of a basic buffer, healer, and single unit damager types to start.
+NPCs can now fire their bows/use throwing weapons.  The goblins archers stay in optimal range for their bows and fire and have skirmish mode logic.  The comitatenses should prefer to use their plumbata when possible but will not skirmish for it; once enemies are in melee range they will switch to melee combat until no enemies are within melee range.
 
 ### REST/ENERGY
 
-The next pawn stat is gonna be energy.  The high level idea is that entities need 7 hours of sleep to recover 17 hours of being awake.  Activity/injury/other things can deplete energy faster.  There's also a debt system so that fatigue/exhaustion can build up below 0 energy.  This debt can be paid off with spells/consumables and also just by sleeping longer than 7 hours.  Sleeping will add a bonus to regeneration rates (health, mana, blood), being exhausted will add debuffs to these and other stuff like AP generation with heavy exhaustion.
+Energy has been implemented as a - 100 to 100 bar so that entities need 7 hours of sleep to recover 17 hours of being awake.  Activity/injury/other things can deplete energy faster.  There's also a tiered debt penalty system so that fatigue/exhaustion can build up below 0 energy.  This debt can be paid off with spells/consumables and also just by sleeping longer than 7 hours.  Stamina is hooked into energy at a rate of 1000 stamina spent equaling 30 minutes of sleep debt, which comes out to ~7% energy.
 
-### PLAYER CONSTRUCTION
+### ENCUMBRANCE
 
-Will be VERY basic to start, just a simple bedroll to deploy and sleep wherever.  Also some basic construction materials and the ability to repair walls.
+There is now an equip load/carry capacity based on strength at 4kg per point.  Carry capacity is 2x equip load.  Dragging things (items, furniture, corpses, eventually injured actors) is being worked on now and just adds the weight of the object directly to your equip load.  There is no hard limit on equip load but there is a tiered penalty system based on % of equip load, with over 200% giving a -50% AP and -50% exert threshold debuff which means you'll work very slowly while running out of stamina very fast.
+
+### EXPANDED NPC LOGIC
+
+Currently working/testing new logic for actors to drag/haul corpses to specific zones.  Once that works logic will be added for workers to clean blood up.  The idea is to give them everything needed to clean up after the big battle.
+
+### CONSTRUCTION
+
+Will be adding some basic building materials so that the fences/walls can be rebuilt after the battle and so that the NPCs do it automatically.  Also there's a simple bedroll that can be placed to sleep wherever.
+
+### NPC SPELLCASTERS
+
+This is unfortunately gonna have to wait a while lol I do NOT have enough spells to make this interesting currently and worker logic is NOT easy so its gonna consume me for a while.
 
 ## Development Path and Goals
 
